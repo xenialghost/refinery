@@ -1,5 +1,1 @@
-[log]
-level = "debug"
 
-[database]
-echo = true

@@ -4,20 +4,19 @@ use std::env;
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
-struct Database {
+pub struct Database {
     url: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
-struct Mqtt {
+pub struct Mqtt {
     url: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Settings {
-    debug: bool,
     database: Database,
     mqtt: Mqtt,
 }

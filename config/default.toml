@@ -1,6 +1,3 @@
-[log]
-level = "info"
-
 [database]
 url = "postgres://postgres@localhost"
 
