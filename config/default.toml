@@ -1,2 +1,5 @@
 [database]
 url = "postgres://postgres@localhost"
+
+[mqtt]
+url = "localhost:1883"

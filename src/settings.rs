@@ -10,9 +10,16 @@ struct Database {
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
+struct Mqtt {
+    url: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[allow(unused)]
 pub struct Settings {
     debug: bool,
     database: Database,
+    mqtt: Mqtt,
 }
 
 impl Settings {
@@ -21,8 +28,8 @@ impl Settings {
             .unwrap_or_else(|_| "development".into());
 
         let settings: Config = Config::builder()
-            .add_source(config::File::with_name("src/config/default"))
-            .add_source(config::File::with_name(&format!("src/config/{}", run_mode)).required(false))
+            .add_source(config::File::with_name("config/default"))
+            .add_source(config::File::with_name(&format!("config/{}", run_mode)).required(false))
             .add_source(config::Environment::with_prefix("refinery"))
             .build()?;
 
