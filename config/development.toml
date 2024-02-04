@@ -1,4 +1,5 @@
-debug = true
+[log]
+level = "debug"
 
 [database]
 echo = true

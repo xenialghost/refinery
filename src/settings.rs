@@ -1,4 +1,4 @@
-use config::Config;
+use config::{Config, ConfigError, Environment, File};
 use serde::Deserialize;
 use std::env;
 
@@ -23,14 +23,14 @@ pub struct Settings {
 }
 
 impl Settings {
-    pub fn new() -> Result<Self, config::ConfigError> {
+    pub fn new() -> Result<Self, ConfigError> {
         let run_mode: String = env::var("SERVICE_PROFILE")
             .unwrap_or_else(|_| "development".into());
 
         let settings: Config = Config::builder()
-            .add_source(config::File::with_name("config/default"))
-            .add_source(config::File::with_name(&format!("config/{}", run_mode)).required(false))
-            .add_source(config::Environment::with_prefix("refinery"))
+            .add_source(File::with_name("config/default"))
+            .add_source(File::with_name(&format!("config/{}", run_mode)).required(false))
+            .add_source(Environment::with_prefix("refinery"))
             .build()?;
 
         settings.try_deserialize()

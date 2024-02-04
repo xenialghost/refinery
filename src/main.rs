@@ -1,9 +1,11 @@
+use std::sync::OnceLock;
+
 mod settings;
 
 use settings::Settings;
 
-fn main() {
-    let settings: Result<Settings, config::ConfigError> = Settings::new();
+static SETTINGS: OnceLock<Settings> = OnceLock::new();
 
-    println!("{:?}", settings);
+fn main() {
+    println!("{:?}", SETTINGS);
 }
