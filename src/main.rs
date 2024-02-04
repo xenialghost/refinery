@@ -1,3 +1,9 @@
+mod settings;
+
+use settings::Settings;
+
 fn main() {
-    println!("Hello, world!");
+    let settings: Result<Settings, config::ConfigError> = Settings::new();
+
+    println!("{:?}", settings);
 }
