@@ -5,20 +5,22 @@ use std::env;
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Database {
-    url: String,
+    pub url: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Mqtt {
-    url: String,
+    pub client_id: String,
+    pub host: String,
+    pub port: u16,
 }
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
 pub struct Settings {
-    database: Database,
-    mqtt: Mqtt,
+    pub database: Database,
+    pub mqtt: Mqtt,
 }
 
 impl Settings {

@@ -2,4 +2,6 @@
 url = "postgres://postgres@localhost"
 
 [mqtt]
-url = "localhost:1883"
+client_id = "refinery"
+host = "localhost"
+port = 1883

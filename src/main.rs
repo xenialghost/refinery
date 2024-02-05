@@ -1,15 +1,19 @@
 use std::sync::OnceLock;
 
-mod settings;
+mod configuration;
+mod mqtt;
 
-use settings::Settings;
+use crate::configuration::Settings;
 
-fn config() -> &'static Settings {
+fn settings() -> &'static Settings {
     static SETTINGS: OnceLock<Settings> = OnceLock::new();
 
     SETTINGS.get_or_init(|| Settings::new().unwrap())
 }
 
-fn main() {
-    println!("{:?}", config());
+#[tokio::main]
+async fn main() {
+    let settings: &Settings = settings();
+
+    mqtt::run(settings.mqtt)
 }
