@@ -3,5 +3,5 @@ url = "postgres://postgres@localhost"
 
 [mqtt]
 client_id = "refinery"
-host = "localhost"
+host = "test.mosquitto.org"
 port = 1883

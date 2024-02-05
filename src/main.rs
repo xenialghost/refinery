@@ -1,7 +1,7 @@
 use std::sync::OnceLock;
 
 mod configuration;
-mod mqtt;
+mod startup;
 
 use crate::configuration::Settings;
 
@@ -15,5 +15,5 @@ fn settings() -> &'static Settings {
 async fn main() {
     let settings: &Settings = settings();
 
-    mqtt::run(settings.mqtt)
+    startup::run(settings.clone()).await;
 }
