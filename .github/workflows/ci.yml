@@ -25,4 +25,4 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target $TARGET
+          args: --release --target ${{ env.TARGET }}
