@@ -20,7 +20,7 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-          target: $TARGET
+          target: ${{ env.TARGET }}
       - name: Build binary
         uses: actions-rs/cargo@v1
         with:

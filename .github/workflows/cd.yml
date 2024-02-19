@@ -20,17 +20,19 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-          target: $TARGET
+          target: ${{ env.TARGET }}
       - name: Build binary
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target $TARGET
+          args: --release --target ${{ env.TARGET }}
+      - name : Strip binary (size optimization)
+        run: strip target/$TARGET/release/refinery
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: refinery-binary
-          path: target/$TARGET/release/refinery
+          path: target/${{ env.TARGET }}/release/refinery
   docker:
     runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
